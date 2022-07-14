@@ -29,4 +29,14 @@ class NumberReceiverFacadeTest {
         assertThat(result.drawDate()).isPresent();
     }
 
+    @Test
+    public void should_return_correct_message() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
 }

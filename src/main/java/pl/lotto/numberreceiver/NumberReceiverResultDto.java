@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-record NumberReceiverResultDto(Optional<UUID> clientLotteryId, Optional<LocalDateTime> drawDate) {
+record NumberReceiverResultDto(Optional<UUID> clientLotteryId, Optional<LocalDateTime> drawDate, String message) {
 }
 
 
