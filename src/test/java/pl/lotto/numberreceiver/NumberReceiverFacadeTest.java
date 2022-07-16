@@ -39,4 +39,15 @@ class NumberReceiverFacadeTest {
         // then
         assertThat(result.message()).isEqualTo("wszystko ok");
     }
+
+    @Test
+    public void should_return_numbers_in_correct_range() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 100);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
 }
