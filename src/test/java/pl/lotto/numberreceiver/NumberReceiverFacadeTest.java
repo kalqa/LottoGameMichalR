@@ -50,4 +50,69 @@ class NumberReceiverFacadeTest {
         // then
         assertThat(result.message()).isEqualTo("wszystko ok");
     }
+
+    @Test
+    public void should_return_correct_number_of_numbers() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6,7,8);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
+
+    @Test
+    public void should_return_different_numbers() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(1, 1, 1, 4, 5, 6);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
+    @Test
+    public void should_return_negative_numbers() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(-1, 2, 1, 4, 5, 6);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
+
+    @Test
+    public void should_return_zero_number() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList();
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
+
+    @Test
+    public void should_return_too_few_numbers_were_given() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(1,2,3);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
+    @Test
+    public void should_return_zero() {
+        // given
+        NumberReceiverFacade facade = new NumberReceiverFacade();
+        List<Integer> numbersFromUser = Arrays.asList(1,2,3, 4,5, 0);
+        // when
+        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+        // then
+        assertThat(result.message()).isEqualTo("wszystko ok");
+    }
+
 }
