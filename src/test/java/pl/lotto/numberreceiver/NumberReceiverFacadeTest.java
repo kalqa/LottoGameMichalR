@@ -37,7 +37,7 @@ class NumberReceiverFacadeTest {
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
+        assertThat(result.message()).isEqualTo("everything is OK");
     }
 
     @Test
@@ -48,7 +48,7 @@ class NumberReceiverFacadeTest {
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
+        assertThat(result.message()).isEqualTo("numbers out of range");
     }
 
     @Test
@@ -59,7 +59,7 @@ class NumberReceiverFacadeTest {
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
+        assertThat(result.message()).isEqualTo("to many numbers");
     }
 
     @Test
@@ -70,18 +70,9 @@ class NumberReceiverFacadeTest {
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
+        assertThat(result.message()).isEqualTo("the numbers are not different");
     }
-    @Test
-    public void should_return_negative_numbers() {
-        // given
-        NumberReceiverFacade facade = new NumberReceiverFacade();
-        List<Integer> numbersFromUser = Arrays.asList(-1, 2, 1, 4, 5, 6);
-        // when
-        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
-        // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
-    }
+
 
     @Test
     public void should_return_zero_number() {
@@ -91,7 +82,7 @@ class NumberReceiverFacadeTest {
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
+        assertThat(result.message()).isEqualTo("you didn't provide numbers");
     }
 
     @Test
@@ -102,17 +93,27 @@ class NumberReceiverFacadeTest {
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
+        assertThat(result.message()).isEqualTo("too few numbers");
     }
-    @Test
-    public void should_return_zero() {
-        // given
-        NumberReceiverFacade facade = new NumberReceiverFacade();
-        List<Integer> numbersFromUser = Arrays.asList(1,2,3, 4,5, 0);
-        // when
-        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
-        // then
-        assertThat(result.message()).isEqualTo("wszystko ok");
-    }
+//    @Test
+//    public void should_return_zero() {
+//        // given
+//        NumberReceiverFacade facade = new NumberReceiverFacade();
+//        List<Integer> numbersFromUser = Arrays.asList(1,2,3,4,5,0);
+//        // when
+//        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+//        // then
+//        assertThat(result.message()).isEqualTo("poza zakresem");
+//    }
+//    @Test
+//    public void should_return_letter() {
+//        // given
+//        NumberReceiverFacade facade = new NumberReceiverFacade();
+//        List<Integer> numbersFromUser = Arrays.asList( 'a',1,2,4,5,0);
+//        // when
+//        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
+//        // then
+//        assertThat(result.message()).isEqualTo("tylko liczby bez liter");
+//    }
 
 }

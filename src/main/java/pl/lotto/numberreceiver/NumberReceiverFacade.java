@@ -9,6 +9,7 @@ public class NumberReceiverFacade {
     public NumberReceiverResultDto inputNumbers(List<Integer> numbersFromUser) {
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         Optional<LocalDateTime> drawDate = Optional.of(LocalDateTime.now());
-        return new NumberReceiverResultDto(clientLotteryId, drawDate, "wszystko ok");
+        return new NumberReceiverResultDto(clientLotteryId, drawDate, "everything is OK");
+        //return new NumberReceiverResultDto(clientLotteryId, drawDate, "numbers out of range");
     }
 }
