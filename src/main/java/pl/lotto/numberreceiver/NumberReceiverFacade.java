@@ -8,7 +8,7 @@ import java.util.UUID;
 public class NumberReceiverFacade {
     public NumberReceiverResultDto inputNumbers(List<Integer> numbersFromUser) {
         for (Integer number : numbersFromUser) {
-            if (number < 1 || number >= 100) {
+            if (!isNumberInRange(number)) {
                 return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "numbers out of range");
             }
         }
@@ -18,5 +18,9 @@ public class NumberReceiverFacade {
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         Optional<LocalDateTime> drawDate = Optional.of(LocalDateTime.now());
         return new NumberReceiverResultDto(clientLotteryId, drawDate, "everything is OK");
+    }
+
+    private boolean isNumberInRange(Integer number) {
+        return number >= 1 && number < 100;
     }
 }
