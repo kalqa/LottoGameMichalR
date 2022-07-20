@@ -7,9 +7,16 @@ import java.util.UUID;
 
 public class NumberReceiverFacade {
     public NumberReceiverResultDto inputNumbers(List<Integer> numbersFromUser) {
+        for (Integer number : numbersFromUser) {
+            if (number < 1 || number >= 100) {
+                return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "numbers out of range");
+            }
+        }
+        if (numbersFromUser.size() > 6) {
+            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "to many numbers");
+        }
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         Optional<LocalDateTime> drawDate = Optional.of(LocalDateTime.now());
         return new NumberReceiverResultDto(clientLotteryId, drawDate, "everything is OK");
-        //return new NumberReceiverResultDto(clientLotteryId, drawDate, "numbers out of range");
     }
 }

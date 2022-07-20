@@ -55,7 +55,7 @@ class NumberReceiverFacadeTest {
     public void should_return_correct_number_of_numbers() {
         // given
         NumberReceiverFacade facade = new NumberReceiverFacade();
-        List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6,7,8);
+        List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
@@ -73,7 +73,6 @@ class NumberReceiverFacadeTest {
         assertThat(result.message()).isEqualTo("the numbers are not different");
     }
 
-
     @Test
     public void should_return_zero_number() {
         // given
@@ -89,31 +88,10 @@ class NumberReceiverFacadeTest {
     public void should_return_too_few_numbers_were_given() {
         // given
         NumberReceiverFacade facade = new NumberReceiverFacade();
-        List<Integer> numbersFromUser = Arrays.asList(1,2,3);
+        List<Integer> numbersFromUser = Arrays.asList(1, 2, 3);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
         assertThat(result.message()).isEqualTo("too few numbers");
     }
-//    @Test
-//    public void should_return_zero() {
-//        // given
-//        NumberReceiverFacade facade = new NumberReceiverFacade();
-//        List<Integer> numbersFromUser = Arrays.asList(1,2,3,4,5,0);
-//        // when
-//        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
-//        // then
-//        assertThat(result.message()).isEqualTo("poza zakresem");
-//    }
-//    @Test
-//    public void should_return_letter() {
-//        // given
-//        NumberReceiverFacade facade = new NumberReceiverFacade();
-//        List<Integer> numbersFromUser = Arrays.asList( 'a',1,2,4,5,0);
-//        // when
-//        NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
-//        // then
-//        assertThat(result.message()).isEqualTo("tylko liczby bez liter");
-//    }
-
 }
