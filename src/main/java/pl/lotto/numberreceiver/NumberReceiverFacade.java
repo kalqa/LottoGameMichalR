@@ -21,7 +21,9 @@ public class NumberReceiverFacade {
         if (numbersFromUser.size() < 6) {
             return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "too few numbers");
         }
-
+        if (numbersFromUser.size() == 0) {
+            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
+        }
 
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         Optional<LocalDateTime> drawDate = Optional.of(LocalDateTime.of(2022,7,30,12,0));
