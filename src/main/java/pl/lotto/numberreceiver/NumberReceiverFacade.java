@@ -10,6 +10,9 @@ public class NumberReceiverFacade {
                 return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "numbers out of range");
             }
         }
+
+        // kod do sprawdzenia poczatek
+
 // set nie będzie zawierał powtarzalnych elementów. ułatwi to sptawe. Przekształć listę w set:
 //            Set<Integer> ExpectedNumbersFromUser = new HashSet<>(numbersFromUser);
 
@@ -24,6 +27,8 @@ public class NumberReceiverFacade {
         if (numbersFromUser.contains(numbersFromUser)) {
             return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
         }
+// kod do sprawdzenia koniec
+
 
 
         if (numbersFromUser.isEmpty() ) {
