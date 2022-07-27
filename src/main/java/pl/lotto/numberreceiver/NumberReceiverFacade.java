@@ -14,19 +14,24 @@ public class NumberReceiverFacade {
         // kod do sprawdzenia poczatek
 
 // set nie będzie zawierał powtarzalnych elementów. ułatwi to sptawe. Przekształć listę w set:
-//            Set<Integer> ExpectedNumbersFromUser = new HashSet<>(numbersFromUser);
+//            Set<Integer> expectedNumbersFromUser = new HashSet<>(numbersFromUser);
 
   //      public boolean contains(numbersFromUser Integer)
 
-        for (Integer number : numbersFromUser) {
-            if(numbersFromUser.contains(numbersFromUser))  {
-                return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
-            }
-        }
+        Set<Integer> numbersFromUser1 = new HashSet<Integer>(numbersFromUser);
+if (numbersFromUser.size()<6)
+    return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
 
-        if (numbersFromUser.contains(numbersFromUser)) {
-            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
-        }
+//
+//        for (Integer number : numbersFromUser) {
+//            if(numbersFromUser.contains(numbersFromUser))  {
+//                return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
+//            }
+//        }
+//
+//        if (numbersFromUser.contains(numbersFromUser)) {
+//            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), "the numbers are not different");
+//        }
 // kod do sprawdzenia koniec
 
 
@@ -44,6 +49,8 @@ public class NumberReceiverFacade {
 
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         Optional<LocalDateTime> drawDate = Optional.of(LocalDateTime.of(2022,7,30,12,0));
+
+
         return new NumberReceiverResultDto(clientLotteryId, drawDate, "everything is OK");
     }
     private boolean isNumberInRange(Integer number) {
