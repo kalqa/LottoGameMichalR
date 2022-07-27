@@ -1,6 +1,6 @@
 package pl.lotto.numberreceiver;
 
-public class getNumbersForDay {
+public class GetNumbersForDay {
 
 
 }
