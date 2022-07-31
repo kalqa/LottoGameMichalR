@@ -4,11 +4,12 @@ public enum NumberValidation {
 
     YOU_DIDNT_PROVIDE_NUMBERS("you didn't provide numbers"),
     TOO_MANY_NUMBERS("to many numbers"),
-    TOO_FEW_NUMBERS( "too few numbers"),
+    TOO_FEW_NUMBERS("too few numbers"),
 
+    NUMBERS_OUT_OF_RANGE("numbers out of range"),
 
-    THE_NUMBERS_ARE_DIFFERENT,
-    EVERYTHING_IS_OK();
+    THE_NUMBERS_ARE_DIFFERENT("the numbers are different"),
+    EVERYTHING_IS_OK("everything is OK");
 
 
     String message;

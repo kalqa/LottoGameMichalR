@@ -19,12 +19,10 @@ public class NumberReceiverFacade {
             return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), validate.message);
         }
 
-
         long count = numbersFromUser.stream()
                 .distinct()
                 .count();
 // sprawdza jaka jest wielkość zbioru, sla nas powinna być 6
-
 
         if (count != 6) {
             String theNumbersAreNotDifferent = "the numbers are not different";

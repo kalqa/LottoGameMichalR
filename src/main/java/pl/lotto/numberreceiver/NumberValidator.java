@@ -19,6 +19,10 @@ class NumberValidator {
 //            String tooFewNumbers = "too few numbers";
 //            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), tooFewNumbers);
         }
+
+
+
+
         return EVERYTHING_IS_OK;
     }
 
