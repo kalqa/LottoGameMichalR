@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static pl.lotto.numberreceiver.NumberValidation.EVERYTHING_IS_OK;
+
 public class NumberReceiverFacade {
     NumberValidator numberValidator;
 
@@ -19,6 +21,6 @@ public class NumberReceiverFacade {
         }
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         Optional<LocalDateTime> drawDate = Optional.of(LocalDateTime.of(2022, 7, 30, 12, 0));
-        return new NumberReceiverResultDto(clientLotteryId, drawDate, "everything is OK");
+        return new NumberReceiverResultDto(clientLotteryId, drawDate, EVERYTHING_IS_OK.message);
     }
 }
