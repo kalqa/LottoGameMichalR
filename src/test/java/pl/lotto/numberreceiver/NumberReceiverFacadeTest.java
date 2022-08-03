@@ -12,7 +12,7 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_client_lottery_id() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade();
+        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -67,7 +67,7 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_failed_message_when_user_gave_duplicate_numbers() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade();
+        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator());
         List<Integer> numbersFromUser = Arrays.asList(1, 1, 2, 3, 4, 5);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
