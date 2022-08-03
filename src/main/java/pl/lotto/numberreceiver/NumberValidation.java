@@ -6,7 +6,7 @@ public enum NumberValidation {
     TOO_MANY_NUMBERS("to many numbers"),
     TOO_FEW_NUMBERS("too few numbers"),
     NUMBERS_OUT_OF_RANGE("numbers out of range"),
-    THE_NUMBERS_ARE_DIFFERENT("the numbers are different"),
+    THE_NUMBERS_ARE_DIFFERENT("the numbers are not different"),
     EVERYTHING_IS_OK("everything is OK");
 
 
