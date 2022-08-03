@@ -16,8 +16,8 @@ class NumberValidator {
         }
         if (numbersFromUser.size() < 6) {
             return TOO_FEW_NUMBERS;
-//            String tooFewNumbers = "too few numbers";
-//            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), tooFewNumbers);
+            String tooFewNumbers = "too few numbers";
+            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), tooFewNumbers);
         }
 
 
