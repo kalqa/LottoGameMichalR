@@ -17,6 +17,7 @@ class NumberValidator {
         if (numbersFromUser.size() < 6) {
             return TOO_FEW_NUMBERS;
         }
+
         return EVERYTHING_IS_OK;
     }
 }

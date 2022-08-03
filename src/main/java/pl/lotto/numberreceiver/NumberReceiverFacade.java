@@ -15,7 +15,11 @@ public class NumberReceiverFacade {
 
     public NumberReceiverResultDto inputNumbers(List<Integer> numbersFromUser) {
         NumberValidation validate = numberValidator.validate(numbersFromUser);
-        if (!validate.equals(NumberValidation.EVERYTHING_IS_OK)) {
+//        if (!validate.equals(NumberValidation.EVERYTHING_IS_OK)) {
+//            return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), validate.message);
+//        }
+
+        if(!validate.isEverything()){
             return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), validate.message);
         }
 
