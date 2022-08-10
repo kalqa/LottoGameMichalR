@@ -1,11 +1,13 @@
 package pl.lotto.numberreceiver;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import static java.time.Month.AUGUST;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class NumberReceiverFacadeTest {
@@ -37,14 +39,17 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_draw_date_for_next_saturday() {
         // given
-        LocalDateTime currentDate = LocalDateTime.of(2022, 8, 3, 18, 34);
+        LocalDateTime currentDate = LocalDateTime.of(2022, 8, 10, 12, 00);
         NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), currentDate);
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
         assertThat(result.drawDate()).isPresent();
-        assertThat(result.drawDate().get()).isEqualTo(LocalDateTime.of(2022, 8, 6, 12, 0));
+        assertThat(result.drawDate().get().getDayOfWeek()).isEqualTo(DayOfWeek.SATURDAY);
+        assertThat(result.drawDate().get().getDayOfMonth()).isEqualTo(13);
+        assertThat(result.drawDate().get().getMonth()).isEqualTo(AUGUST);
+        assertThat(result.drawDate().get().getYear()).isEqualTo(2022);
     }
 
     @Test
