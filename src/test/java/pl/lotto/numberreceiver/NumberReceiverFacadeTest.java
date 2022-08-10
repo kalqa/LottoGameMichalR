@@ -17,7 +17,8 @@ class NumberReceiverFacadeTest {
         // given
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
-                LocalDateTime.of(2022, 7, 2, 11, 0));
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -28,7 +29,9 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_draw_date() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -40,7 +43,8 @@ class NumberReceiverFacadeTest {
     public void should_return_draw_date_for_next_saturday() {
         // given
         LocalDateTime currentDate = LocalDateTime.of(2022, 8, 10, 12, 00);
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), currentDate);
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(), currentDate);
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
