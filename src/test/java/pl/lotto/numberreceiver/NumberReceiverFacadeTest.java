@@ -18,7 +18,9 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(),
+                new DataBaseForTest()
+        );
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -32,7 +34,9 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(),
+                new DataBaseForTest()
+        );
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -46,7 +50,9 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 8, 20, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(),
+                new DataBaseForTest()
+        );
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -64,7 +70,9 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(),
+                new DataBaseForTest()
+        );
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -78,7 +86,8 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(),
+                new DataBaseForTest());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 100);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -92,7 +101,7 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(), new DataBaseForTest());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -106,7 +115,7 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(), new DataBaseForTest());
         List<Integer> numbersFromUser = Arrays.asList(1, 1, 2, 3, 4, 5);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -120,7 +129,7 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(), new DataBaseForTest());
         List<Integer> numbersFromUser = Arrays.asList();
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -134,7 +143,7 @@ class NumberReceiverFacadeTest {
         NumberReceiverFacade facade = new NumberReceiverFacade(
                 new NumberValidator(),
                 LocalDateTime.of(2022, 7, 2, 11, 0),
-                new NextDrawDateGenerator());
+                new NextDrawDateGenerator(), new DataBaseForTest());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);

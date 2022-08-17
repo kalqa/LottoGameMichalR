@@ -10,12 +10,13 @@ public class NumberReceiverFacade {
     NumberValidator numberValidator;
     LocalDateTime currentDate;
     NextDrawDateGenerator generator;
-    Map<UUID, List<Integer>> dataBase = new HashMap<>();
+    UserNumbersRepository repository;
 
-    public NumberReceiverFacade(NumberValidator numberValidator, LocalDateTime currentDate, NextDrawDateGenerator generator) {
+    public NumberReceiverFacade(NumberValidator numberValidator, LocalDateTime currentDate, NextDrawDateGenerator generator, UserNumbersRepository repository) {
         this.numberValidator = numberValidator;
         this.currentDate = currentDate;
         this.generator = generator;
+        this.repository = repository;
 
     }
 
@@ -28,8 +29,8 @@ public class NumberReceiverFacade {
         LocalDateTime drawDateGenerated = generator.generateNextDrawDate(this.currentDate);
         Optional<LocalDateTime> drawDate = Optional.of(drawDateGenerated);
 
-        dataBase.put(clientLotteryId.get(), numbersFromUser);
-
+        UserInput userInput = new UserInput(clientLotteryId.get(), numbersFromUser);
+        repository.save(userInput);
         return new NumberReceiverResultDto(clientLotteryId, drawDate, EVERYTHING_IS_OK.message);
     }
 

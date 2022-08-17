@@ -16,7 +16,7 @@ public enum NumberValidation {
         this.message = message;
     }
 
-    public boolean isEverything(){
+    public boolean isEverything() {
         return this.equals(EVERYTHING_IS_OK);
     }
 
