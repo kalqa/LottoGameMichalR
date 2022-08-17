@@ -30,7 +30,8 @@ class NumberReceiverFacadeTest {
     public void should_return_draw_date() {
         // given
         NumberReceiverFacade facade = new NumberReceiverFacade(
-                new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
                 new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
@@ -42,16 +43,17 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_draw_date_for_next_saturday() {
         // given
-        LocalDateTime currentDate = LocalDateTime.of(2022, 8, 10, 12, 00);
         NumberReceiverFacade facade = new NumberReceiverFacade(
-                new NumberValidator(), currentDate);
+                new NumberValidator(),
+                LocalDateTime.of(2022, 8, 20, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
         // then
         assertThat(result.drawDate()).isPresent();
         assertThat(result.drawDate().get().getDayOfWeek()).isEqualTo(DayOfWeek.SATURDAY);
-        assertThat(result.drawDate().get().getDayOfMonth()).isEqualTo(13);
+        assertThat(result.drawDate().get().getDayOfMonth()).isEqualTo(20);
         assertThat(result.drawDate().get().getMonth()).isEqualTo(AUGUST);
         assertThat(result.drawDate().get().getYear()).isEqualTo(2022);
     }
@@ -59,7 +61,10 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_correct_message() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -70,7 +75,10 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_numbers_in_correct_range() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 100);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -81,7 +89,10 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_correct_number_of_numbers() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -92,7 +103,10 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_failed_message_when_user_gave_duplicate_numbers() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 1, 2, 3, 4, 5);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -103,7 +117,10 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_zero_number() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList();
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
@@ -114,7 +131,10 @@ class NumberReceiverFacadeTest {
     @Test
     public void should_return_too_few_numbers_were_given() {
         // given
-        NumberReceiverFacade facade = new NumberReceiverFacade(new NumberValidator(), LocalDateTime.of(2022, 7, 2, 11, 0));
+        NumberReceiverFacade facade = new NumberReceiverFacade(
+                new NumberValidator(),
+                LocalDateTime.of(2022, 7, 2, 11, 0),
+                new NextDrawDateGenerator());
         List<Integer> numbersFromUser = Arrays.asList(1, 2, 3);
         // when
         NumberReceiverResultDto result = facade.inputNumbers(numbersFromUser);
