@@ -33,6 +33,10 @@ public class NumberReceiverFacade {
         repository.save(userInput);
         return new NumberReceiverResultDto(clientLotteryId, drawDate, EVERYTHING_IS_OK.message);
     }
+public Set<Integer> getNumbersForDay(){
 
+        return null;
+}
+        ;
 
 }
