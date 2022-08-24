@@ -1,7 +1,10 @@
 package pl.lotto.numberreceiver;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 import static pl.lotto.numberreceiver.NumberValidation.EVERYTHING_IS_OK;
 
@@ -22,21 +25,21 @@ public class NumberReceiverFacade {
 
     public NumberReceiverResultDto inputNumbers(List<Integer> numbersFromUser) {
         NumberValidation validate = numberValidator.validate(numbersFromUser);
-        if (!validate.isEverything()) {
+        if (!validate.isEverythingOk()) {
             return new NumberReceiverResultDto(Optional.empty(), Optional.empty(), validate.message);
         }
         Optional<UUID> clientLotteryId = Optional.of(UUID.randomUUID());
         LocalDateTime drawDateGenerated = generator.generateNextDrawDate(this.currentDate);
         Optional<LocalDateTime> drawDate = Optional.of(drawDateGenerated);
 
-        UserInput userInput = new UserInput(clientLotteryId.get(), numbersFromUser);
+        UserInput userInput = new UserInput(clientLotteryId.get(), numbersFromUser, drawDateGenerated);
         repository.save(userInput);
         return new NumberReceiverResultDto(clientLotteryId, drawDate, EVERYTHING_IS_OK.message);
     }
-public Set<Integer> getNumbersForDay(){
 
-        return null;
-}
-        ;
+    public Map<UUID, DateAndNumber> getNumbersForDay(LocalDateTime ticketDate) {
+        return repository.findAllByTicketDate(ticketDate);
+
+    }
 
 }
