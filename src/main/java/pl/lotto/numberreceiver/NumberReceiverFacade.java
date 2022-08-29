@@ -39,6 +39,7 @@ public class NumberReceiverFacade {
 
     public Map<UUID, DateAndNumber> getNumbersForDay(LocalDateTime ticketDate) {
         return repository.findAllByTicketDate(ticketDate);
+// ma zwrócić mape
 
     }
 
